@@ -6,7 +6,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/cezarmathe/gosh/shell/prompt"
+	"github.com/maxmcd/gosh/shell/prompt"
 )
 
 var (

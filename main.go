@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/cezarmathe/gosh/shell"
+	"github.com/maxmcd/gosh/shell"
 )
 
 func main() {

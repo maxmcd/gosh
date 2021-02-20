@@ -1,12 +1,13 @@
 package shell
 
 import (
+	"fmt"
 	"io"
 	"os"
 	"os/exec"
 	"strings"
 
-	"github.com/cezarmathe/gosh/builtin"
+	"github.com/maxmcd/gosh/builtin"
 )
 
 func interpret() error {
@@ -39,11 +40,11 @@ func interpret() error {
 	argv := strings.Fields(input)
 
 	// check if the command is a builtin command
-	fn, err := builtin.Check(argv)
-	if err == nil {
-		err = fn(argv)
-		return err
+	fn := builtin.Check(argv)
+	if fn != nil {
+		return fn(argv)
 	}
+	fmt.Println("BUT WHY")
 
 	// otherwise, execute the command
 	cmd := exec.Command("bash", "-c", input)
@@ -52,14 +53,7 @@ func interpret() error {
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 
-	err = cmd.Run()
-
-	if err != nil {
-		return err
-	}
-
-	return nil
-
+	return cmd.Run()
 }
 
 func readInput() (string, error) {

@@ -1,19 +1,21 @@
 package builtin
 
 import (
-	"errors"
-
-	"github.com/cezarmathe/gosh/builtin/commands"
+	"github.com/maxmcd/gosh/builtin/commands"
 )
 
 // Check verifies if a command is a builtin command
-func Check(argv []string) (func([]string) error, error) {
+func Check(argv []string) func([]string) error {
 	switch argv[0] {
 	case "cd":
-		return commands.Cd, nil
+		return commands.Cd
 	case "exit":
-		return commands.Exit, nil
+		return commands.Exit
+	case "ls":
+		return commands.Ls
+	case "pwd":
+		return commands.Pwd
 	default:
-		return nil, errors.New(argv[0] + " is not a builtin command")
+		return nil
 	}
 }

@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/cezarmathe/gosh/builtin"
+	"github.com/maxmcd/gosh/builtin"
 )
 
 const (
