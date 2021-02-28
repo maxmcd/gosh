@@ -13,8 +13,12 @@ func Check(argv []string) func([]string) error {
 		return commands.Exit
 	case "ls":
 		return commands.Ls
+	case "touch":
+		return commands.Touch
 	case "pwd":
 		return commands.Pwd
+	case "networktest":
+		return commands.Networktest
 	default:
 		return nil
 	}

@@ -1,7 +1,6 @@
 package shell
 
 import (
-	"fmt"
 	"io"
 	"os"
 	"os/exec"
@@ -44,7 +43,6 @@ func interpret() error {
 	if fn != nil {
 		return fn(argv)
 	}
-	fmt.Println("BUT WHY")
 
 	// otherwise, execute the command
 	cmd := exec.Command("bash", "-c", input)
